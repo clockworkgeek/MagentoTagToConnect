@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-require_once __DIR__.'/../vendor/autoload.php';
+@include_once __DIR__.'/../vendor/autoload.php';
 
 // these consts normally defined in Mage.php
 if (! defined('DS')) define('DS', DIRECTORY_SEPARATOR);
