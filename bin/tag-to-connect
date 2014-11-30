@@ -22,4 +22,5 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-php -f ${BASH_SOURCE%/*}/tag-to-connect.php -- $*
+DIR=`readlink -f $BASH_SOURCE`
+php -f ${DIR%/*}/tag-to-connect.php -- $*

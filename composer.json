@@ -22,13 +22,12 @@
     },
     "autoload": {
         "psr-0": {
-            "Mage_": "vendor/connect20/Lib_Mage/lib",
+            "Mage_": ["vendor/connect20/Lib_Mage/lib", "../../connect20/Lib_Mage/lib"],
             "Clockworkgeek_": "src"
         }
     },
     "require-dev": {},
     "bin": [
-        "bin/tag-to-connect",
-        "bin/tag-to-connect.php"
+        "bin/tag-to-connect"
     ]
 }
