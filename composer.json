@@ -28,6 +28,7 @@
     },
     "require-dev": {},
     "bin": [
-        "bin/tag-to-connect"
+        "bin/tag-to-connect",
+        "bin/tag-to-connect.php"
     ]
 }

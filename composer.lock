@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "11aaf318fca4a402271f1256faa1c985",
+    "hash": "2391e1f287a221a9fad89c07b0fe1734",
     "packages": [
         {
             "name": "connect20/Lib_Mage",
