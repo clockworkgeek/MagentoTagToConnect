@@ -18,7 +18,7 @@ If you have not installed packages globally before you will probably have to [ad
 Assuming a typical workflow where you are publishing an extension to
 [Firegento repository](http://packages.firegento.com/) and tagging
 the project with version numbers...  TagToConnect needs to know the name of the
-package and the relevant tag to use.  e.g.
+package and the relevant tag to use.  e.g. from the project directory type:
 
     $ tag-to-connect Clockworkgeek_Example v1.0.0
     Packaging var/connect/Clockworkgeek_Example-1.0.0.tgz...
@@ -38,7 +38,7 @@ if necessary:
             {
                 "name": "Your name here",
                 "email": "your.name@example.com",
-                "user": "your_username"
+                "user": "alternate_username"
             }
         ]
     }
