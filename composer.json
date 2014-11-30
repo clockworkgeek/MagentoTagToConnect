@@ -1,0 +1,33 @@
+{
+    "name": "clockworkgeek/tag-to-connect",
+    "description": "Build Connect 2.0 packages from composer.json and git tags",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Deady",
+            "email": "daniel@clockworkgeek.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "connect20/lib_mage": "~1.5",
+        "totten/license-data": "~0.2",
+        "php": "~5.2"
+    },
+    "repositories": {
+        "firegento": {
+            "type": "composer",
+            "url": "http://packages.firegento.com"
+        }
+    },
+    "autoload": {
+        "psr-0": {
+            "Mage_": "vendor/connect20/Lib_Mage/lib",
+            "Clockworkgeek_": "src"
+        }
+    },
+    "require-dev": {},
+    "bin": [
+        "bin/tag-to-connect"
+    ]
+}

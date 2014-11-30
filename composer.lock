@@ -1,0 +1,76 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "11aaf318fca4a402271f1256faa1c985",
+    "packages": [
+        {
+            "name": "connect20/Lib_Mage",
+            "version": "1.8.0.0",
+            "dist": {
+                "type": "tar",
+                "url": "http://connect20.magentocommerce.com/community/Lib_Mage/1.8.0.0/Lib_Mage-1.8.0.0.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "suggest": {
+                "magento-hackathon/magento-composer-installer": "Allows to manage this package as a dependency"
+            },
+            "type": "magento-module",
+            "extra": {
+                "package-xml": "package.xml"
+            },
+            "license": [
+                "OSL-v3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Magento Core Team",
+                    "email": "core@magentocommerce.com"
+                }
+            ],
+            "description": "Mage Library"
+        },
+        {
+            "name": "totten/license-data",
+            "version": "0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/totten/license-data.git",
+                "reference": "369b6658c7bf9fbb4b9052efa723de00a3fb0da4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/totten/license-data/zipball/369b6658c7bf9fbb4b9052efa723de00a3fb0da4",
+                "reference": "369b6658c7bf9fbb4b9052efa723de00a3fb0da4",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "LicenseData": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Tim Otten",
+                    "email": "totten@civicrm.org"
+                }
+            ],
+            "description": "Dataset with open-source licenses",
+            "time": "2014-09-23 08:47:44"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "platform": {
+        "php": "~5.2"
+    },
+    "platform-dev": []
+}
