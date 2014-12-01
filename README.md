@@ -8,6 +8,7 @@ automatically builds Connect 2.0 packages from Git tags and `composer.json` file
 Perhaps the most useful way to install is globally:
 
     composer global config repositories.tag-to-connect vcs https://github.com/clockworkgeek/MagentoTagToConnect.git
+    composer global config repositories.firegento composer http://packages.firegento.com
     composer global require clockworkgeek/tag-to-connect:@stable
 
 If you have not installed packages globally before you will probably have to [add
