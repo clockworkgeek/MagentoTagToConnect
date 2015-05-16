@@ -1,17 +1,17 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2391e1f287a221a9fad89c07b0fe1734",
+    "hash": "4f3d150dc75db69a9890ec6ac29eb144",
     "packages": [
         {
             "name": "connect20/Lib_Mage",
-            "version": "1.8.0.0",
+            "version": "1.9.1.0",
             "dist": {
                 "type": "tar",
-                "url": "http://connect20.magentocommerce.com/community/Lib_Mage/1.8.0.0/Lib_Mage-1.8.0.0.tgz",
+                "url": "http://connect20.magentocommerce.com/community/Lib_Mage/1.9.1.0/Lib_Mage-1.9.1.0.tgz",
                 "reference": null,
                 "shasum": null
             },
@@ -69,6 +69,7 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": "~5.2"
     },
