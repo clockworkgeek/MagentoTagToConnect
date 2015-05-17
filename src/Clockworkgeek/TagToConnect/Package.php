@@ -83,11 +83,102 @@ class Clockworkgeek_TagToConnect_Package extends Mage_Connect_Package
                 }
                 $this->addAuthor($author->name, $author->user, $author->email);
             }
+
+            $requires = (array) @$json->require;
+            if ($requires) {
+                $this->addConnectDependencies($requires);
+            }
         }
         else {
             trigger_error("There is no 'composer.json' in '{$this->tag->getName()}'", E_USER_WARNING);
         }
         return $this;
+    }
+
+    public function addConnectDependencies(array $requires)
+    {
+        // array keys are preserved throughout
+        $requires = array_map('Clockworkgeek_TagToConnect_Package::parseVersions', $requires);
+        // filter out requirements which could not be parsed
+        $requires = array_filter($requires);
+        $names = array_keys($requires);
+        $tokens = preg_filter(
+            array('#^connect20/([^_/]+_[^_/]+)$#', '#^([^/]+)/([^/]+)$#'),
+            array('$1', '$1_$2'),
+            // keys are preserved so must be the original name
+            // values are lower case for insensitive comparison later
+            array_combine(
+                $names,
+                array_map('strtolower', $names)
+            )
+        );
+        if ($tokens) {
+            // magento packages typically only have 'word' characters
+            $tokens = preg_replace('#[^\w/]+#', '', $tokens);
+
+            // allow local composer take precedence
+            // else assume it's installed globally
+            // assumption is valid because user must have composer somewhere
+            $command = file_exists('composer.phar') ? 'php -f composer.phar --' : 'composer';
+            $command .= ' search ';
+            $command .= implode(' ', $tokens);
+
+            // perform search on all relevant repositories
+            $results = array();
+            trigger_error('Searching repository for dependencies...', E_USER_NOTICE);
+            exec($command, $results);
+            $results = preg_filter('#^connect20/(\w+).*#', '$1', $results);
+            // case insensitive compare
+            $results = array_intersect_key(
+                $results,
+                array_unique(array_map('strtolower', $results))
+            );
+
+            foreach ($results as $name) {
+                trigger_error("Assumed package '{$name}' is required", E_USER_NOTICE);
+                // search for adjusted value, return key which is original name
+                $require = array_search(strtolower($name), $tokens);
+                $min = $max = null;
+                if ($require && isset($requires[$require])) {
+                    list($min, $max) = $requires[$require];
+                }
+                // else search didn't find version numbers, proceed anyway
+                $this->addDependencyPackage($name, 'community', $min, $max);
+            }
+        }
+    }
+
+    /**
+     * Returns minimum and maximum as tuple
+     * 
+     * @param string $data
+     * @return array
+     */
+    public static function parseVersions($input)
+    {
+        switch (true) {
+            case preg_match('/^>=([-\w\.]+)$/', $input, $vers):
+                return array($vers[1], null);
+            case preg_match('/^>=([-\w\.]+) <([-\w\.]+)$/', $input, $vers):
+                return array($vers[1], $vers[2]);
+            case preg_match('/^[~^](\d+)\.(\d+)$/', $input, $vers):
+                return array(
+                    $vers[1].'.'.$vers[2],
+                    ($vers[1]+1).'.0'
+                );
+            case preg_match('/^~(\d+)\.(\d+)\.([\d\.]+)/', $input, $vers):
+                return array(
+                    $vers[1].'.'.$vers[2].'.'.$vers[3],
+                    $vers[1].'.'.($vers[2]+1).'.0'
+                );
+            case preg_match('/^\^(\d+)\.(\d+)\.([\d\.]+)/', $input, $vers):
+                return array(
+                    $vers[1].'.'.$vers[2].'.'.$vers[3],
+                    ($vers[1]+1).'.0.0'
+                );
+            default:
+                array(null, null);
+        }
     }
 
     public static function lookupLicenseUrl($code)
