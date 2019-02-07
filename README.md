@@ -8,7 +8,7 @@ automatically builds Connect 2.0 packages from Git tags and `composer.json` file
 Perhaps the most useful way to install is globally:
 
     composer global config repositories.tag-to-connect vcs https://github.com/clockworkgeek/MagentoTagToConnect.git
-    composer global config repositories.firegento composer http://packages.firegento.com
+    composer global config repositories.firegento composer https://packages.firegento.com
     composer global require clockworkgeek/tag-to-connect:@stable
 
 If you have not installed packages globally before you will probably have to [add
@@ -17,7 +17,7 @@ If you have not installed packages globally before you will probably have to [ad
 ### Usage
 
 Assuming a typical workflow where you are publishing an extension to
-[Firegento repository](http://packages.firegento.com/) and tagging
+[Firegento repository](https://packages.firegento.com/) and tagging
 the project with version numbers...  TagToConnect needs to know the name of the
 package and the relevant tag to use.  e.g. from the project directory type:
 
